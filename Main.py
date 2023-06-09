@@ -1,4 +1,5 @@
 from Ingrediente import Ingrediente
+from Receita import Receita
 
 # Lista de ingredientes
 ingredientes = []
@@ -9,6 +10,15 @@ def criar_ingrediente():
     ingrediente = Ingrediente(id_ing, nome_ing)
     return ingrediente
 
+# Lista de receitas
+receitas = []
+# Função para criar uma nova receita
+def criar_receita():
+    id_rec = int(input("Digite o ID da receita: "))
+    nome_rec = input("Digite o nome da receita: ")
+    autor_rec = input("Digite o autor da receita: ")
+    receita = Receita(id_rec, nome_rec, autor_rec)
+    return receita
 
 # Função para listar os ingredientes
 def listar_ingredientes(ingredientes):
@@ -42,9 +52,6 @@ def atualizar_ingrediente(ingredientes):
             return
     print("Ingrediente não encontrado.")
 
-
-# Lista de receitas
-receitas = []
 # Lista de relações entre receitas e ingredientes
 relacoes = []
 

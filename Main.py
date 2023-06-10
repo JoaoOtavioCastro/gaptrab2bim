@@ -10,16 +10,6 @@ def criar_ingrediente():
     ingrediente = Ingrediente(id_ing, nome_ing)
     return ingrediente
 
-# Lista de receitas
-receitas = []
-# Função para criar uma nova receita
-def criar_receita():
-    id_rec = int(input("Digite o ID da receita: "))
-    nome_rec = input("Digite o nome da receita: ")
-    autor_rec = input("Digite o autor da receita: ")
-    receita = Receita(id_rec, nome_rec, autor_rec)
-    return receita
-
 # Função para listar os ingredientes
 def listar_ingredientes(ingredientes):
     if len(ingredientes) == 0:
@@ -28,7 +18,6 @@ def listar_ingredientes(ingredientes):
         print("Lista de Ingredientes:")
         for ingrediente in ingredientes:
             print(f"ID: {ingrediente.id_ing} | Nome: {ingrediente.nome_ing}")
-
 
 # Função para remover um ingrediente
 def remover_ingrediente(ingredientes):
@@ -40,7 +29,6 @@ def remover_ingrediente(ingredientes):
             return
     print("Ingrediente não encontrado.")
 
-
 # Função para atualizar um ingrediente
 def atualizar_ingrediente(ingredientes):
     id_ing = int(input("Digite o ID do ingrediente a ser atualizado: "))
@@ -51,6 +39,47 @@ def atualizar_ingrediente(ingredientes):
             print("Ingrediente atualizado com sucesso.")
             return
     print("Ingrediente não encontrado.")
+
+# Lista de receitas
+receitas = []
+
+# Função para criar uma nova receita
+def criar_receita():
+    id_rec = int(input("Digite o ID da receita: "))
+    nome_rec = input("Digite o nome da receita: ")
+    autor_rec = input("Digite o autor da receita: ")
+    receita = Receita(id_rec, nome_rec, autor_rec)
+    return receita
+
+# Função para listar as receitas
+def listar_receitas(receitas):
+    if len(receitas) == 0:
+        print("Não há receitas cadastradas.")
+    else:
+        print("Lista de Receitas:")
+        for receita in receitas:
+            print(f"ID: {receita.id_rec} | Nome: {receita.nome_rec} | Autor: {receita.autor_rec}")
+
+# Função para remover uma receita
+def remover_receita(receitas):
+    id_rec = int(input("Digite o ID da receita a ser removida: "))
+    for receita in receitas:
+        if receita.id_rec == id_rec:
+            receitas.remove(receita)
+            print("Receita removida com sucesso.")
+            return
+    print("Receita não encontrada.")
+
+# Função para atualizar uma receita
+def atualizar_receita(receitas):
+    id_rec = int(input("Digite o ID da receita a ser atualizada: "))
+    for receita in receitas:
+        if receita.id_rec == id_rec:
+            novo_nome = input("Digite o novo nome da receita: ")
+            receita.nome_rec = novo_nome
+            print("Receita atualizada com sucesso.")
+            return
+    print("Receita não encontrada.")
 
 # Lista de relações entre receitas e ingredientes
 relacoes = []
@@ -84,13 +113,15 @@ while True:
     elif opcao == "4":
         atualizar_ingrediente(ingredientes)
     elif opcao == "5":
-        pass
+        receita = criar_receita()
+        receitas.append(receita)
+        print("Receita criada com sucesso!")
     elif opcao == "6":
-        pass
+        listar_receitas(receitas)
     elif opcao == "7":
-        pass
+        remover_receita(receitas)
     elif opcao == "8":
-        pass
+        atualizar_receita(receitas)
     elif opcao == "9":
         pass
     elif opcao == "10":
